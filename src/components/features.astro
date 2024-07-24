@@ -1,30 +1,37 @@
 ---
 // @ts-ignore
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
+import Link from '@components/ui/link.astro';
 
 const features = [
   {
-    title: "Kollaborative Literatursammlung",
+    title: 'Kollaborative Literatursammlung',
     description:
-      "Finde und ergänze wissenschaftliche und journalistische Veröffentlichungen in der Literatursammlung auf Zotero Online.",
-    icon: "bx:bxs-book",
+      'Finde und ergänze wissenschaftliche und journalistische Veröffentlichungen in der Literatursammlung auf Zotero Online.',
+    icon: 'bx:bxs-book',
+    path: 'https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library',
+    label: 'Zur Sammlung',
   },
   {
-    title: "SDG-KI-Explorer",
+    title: 'SDG-KI-Explorer',
     description:
-      "Reflektiere die aktuelle Entwicklung von KI an den 17 Nachhaltigkeitszielen der Vereinten Nationen.",
-    icon: "bx:bxs-file-find",
+      'Reflektiere die aktuelle Entwicklung von KI an den 17 Nachhaltigkeitszielen der Vereinten Nationen.',
+    icon: 'bx:bxs-file-find',
+    path: '/explorer',
+    label: 'Zum Explorer',
   },
   {
-    title: "Austausch und Diskussion",
+    title: 'Austausch und Diskussion',
     description:
-      "Diskutiere mit anderen Quellen, Argumente, Herausforderungen und Fragestellungen. ",
-    icon: "bx:bxs-user",
+      'Diskutiere mit anderen Interessieren Quellen, Argumente, Herausforderungen und Fragestellungen. ',
+    icon: 'bx:bxs-user',
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0" id="features">
+<div
+  class="mt-16 md:mt-0"
+  id="features">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
     Wie nachhaltig ist Künstliche Intelligenz?
   </h2>
@@ -38,11 +45,27 @@ const features = [
     features.map((item) => (
       <div class="flex gap-4 items-start">
         <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+          <Icon
+            class="text-white"
+            name={item.icon}
+          />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <h3 class="font-semibold text-lg">{item.title}</h3>{' '}
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          {item.path !== undefined ? (
+            <Link
+              href={item.path}
+              class="flex gap-1 items-center mt-4"
+              rel="noopener">
+              <Icon
+                class="text-white w-5 h-5"
+                name={item.icon}
+              />
+              {item.label}
+            </Link>
+          ) : ""
+          }
         </div>
       </div>
     ))
