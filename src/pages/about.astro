@@ -1,57 +1,66 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
+import { getCollection } from 'astro:content';
+import { Picture } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/container.astro';
+import Sectionhead from '@components/sectionhead.astro';
 
 // Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
+const publishedTeamMembers = await getCollection('team', ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 ---
 
-<Layout title="About">
+<Layout title="Über">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">Über diese Seite</Fragment>
+      <Fragment slot="desc"></Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
+      <h2 class="font-bold text-3xl text-gray-800">Zur Entstehung</h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+        Bei den Vorbereitungen meiner Workshops und Vorträge zu ethischen
+        Herausforderungen von Künstlicher Intelligenz wurde irgendwann deutlich,
+        dass die Themen Energie, menschenwürdige Arbeit, Ausbeutung natürlicher
+        Ressourcen und Klima eine entscheidende Rolle in der Zukunft dieser Technologie
+        spielen.
       </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
-
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
-          </div>
-        ))
-      }
+      <p class="text-lg leading-relaxed text-slate-500">
+        Gleichzeitig fand ich immer wieder Veröffentlichungen, die die Potenziale von KI für das Wohl der Menschheit heraustellten. Auch hier ging es um Energie, Arbeit, Umwelt und Wirtschaft, jedoch von einer positiven Warte aus betrachtet.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Um die Vielschichtigkeit und Ambiguität der Diskussion ordnen zu können, die sich nicht mehr allein um ethische Kriterien drehte, suchte ich nach einem passenden Rahmen. Er sollte für zukünftige Workshops handhabbar und am besten etabliert und bekannt sein.
+      </p>
+      <h3 class="font-bold text-xl text-gray-800">Bezugsrahmen BNE</h3>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Als erstes bietet sich hier der Bezugsrahmen Bildung für Nachhaltige Entwicklung (BNE) an. Mit seinen Oberkategorien Ökologie, Ökonomie und Soziales ermöglichte er eine erste grobe Unterscheidung meiner Rechercheergebisse und Quellen. Da BNE in unterschiedlichen Bildungszusammenhängen bekannt oder etabliert ist, gelingt damit auch die Untersuchung von KI.
+      </p>
+      <h3 class="font-bold text-xl text-gray-800">Bezugsrahmen SDGs</h3>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Für eine feinere Unterscheidung der Herausforderungen und Potenziale, die KI für die Menschheit mit sich bringt, bieten sich zudem die 17 Nachhaltigkeitsziele (SDGs) der Vereinten Nationenen an. Sie erlauben zudem internationale Kompatiblität in der Diskussion von KI und Nachhaltigkeit, was für BNE erst einmal nicht gegeben ist.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Anlass, die Ergebnisse dieser Sammlung und Strukturierung als interaktive Website und Open Educational Ressource (OER) aufzubereiten, waren zwei Workshops zu KI und Nachhaltigkeit, die ich 2024 neben meiner hauptberuflichen Tätigkeit entwickelt und durchgeführt habe.
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800">Auseinandersetzung, Diskussion, Meinungsbildung</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Die vorliegende Website ist vor allem als Ausgangspunkt einer Auseinandersetzung individuell oder in sozialen Lernsituationen mit dem Spannungsfeld KI und Nachhaltigkeit gedacht. Dafür habe ich bisher die Quellen der <a class="font-bold underline" href="#">kollaborativen Literatursammlung</a> den 17 Nachhaltigkeitszielen zugeordnet und als <a class="font-bold underline" href="#">SDG-KI-Explorer</a> aufbereitet.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Die Unterseiten der Nachhaltigkeitsziele sind mit weiterführenden Links zu ihren Inhalten und Teilzielen versehen. Zudem ergänze ich die Seite mit Reflexionsfragen, die mir beim Lesen einfallen oder die sich in Workshopsituationen ergeben.
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800">Ausblick</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Der aktuelle Stand der Website ist eine Arbeitsfassung, die mir auch mal wieder dazu dient, aktuelle Webtechnologien und Workflows, die ich für sinnvoll und ausbaufähig im Open-Education-Diskurs halte, zu implementieren. 
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Ich verwende <a class="font-bold underline" href="https://astro.build">Astro</a>, um eine statische Website zu bauen und greife auf die API von <strong>Zotero Online</strong> zu, um die Literatursammlung beim Bauen der Seite für die 17 Nachhaltigkeitsziele aufzubereiten. 
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        In Zukunft werde ich die Seite je nach verfügbarer Zeit weiterentwickeln und freue mich über Ideen, Anregungen und konkrete Mitarbeit.
+      </p>
     </div>
   </Container>
 </Layout>
