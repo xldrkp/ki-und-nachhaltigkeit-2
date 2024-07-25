@@ -12,7 +12,7 @@ const publishedTeamMembers = await getCollection('team', ({ data }) => {
 ---
 
 <Layout title="Über">
-  <Container>
+  <Container class="px-5">
     <Sectionhead>
       <Fragment slot="title">Über diese Seite</Fragment>
       <Fragment slot="desc"></Fragment>
@@ -60,6 +60,10 @@ const publishedTeamMembers = await getCollection('team', ({ data }) => {
       </p>
       <p class="text-lg leading-relaxed text-slate-500">
         In Zukunft werde ich die Seite je nach verfügbarer Zeit weiterentwickeln und freue mich über Ideen, Anregungen und konkrete Mitarbeit.
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800">Mediennachweise</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        <a class="font-bold underline" href="https://pixabay.com/de/illustrations/weg-kreuzung-richtung-abzweigung-1020203/">Illustration auf der Startseite</a> von <a class="font-bold underline" href="https://pixabay.com/de/users/peggy_marco-1553824/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1020203">Peggy und Marco Lachmann-Anke</a> auf <a class="font-bold underline" href="https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1020203">Pixabay</a>; nicht unter Creative Commons
       </p>
     </div>
   </Container>

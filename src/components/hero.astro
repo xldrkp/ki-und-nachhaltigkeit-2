@@ -1,17 +1,18 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
-import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon/components";
+import { Picture } from 'astro:assets';
+import heroImage from 'assets/hero.jpg';
+import Link from '@components/ui/link.astro';
+import { Icon } from 'astro-icon/components';
+const base = import.meta.env.BASE_URL;
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-4 pb-8 md:pt-0 md:pb-24">
+<main class="grid lg:grid-cols-2 place-items-center pt-4 pb-8 md:pt-0 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
       src={heroImage}
       alt="Astronaut in the air"
       widths={[200, 400, 600]}
+      height={450}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
@@ -26,16 +27,37 @@ import { Icon } from "astro-icon/components";
       Chance oder Widerspruch?
     </p>
     <p class="text-lg mt-4 text-slate-800 max-w-3xl tracking-tight">
-      Künstliche Intelligenz (KI) könne das Klima retten, die Energiewende voranbringen und Gesundheit und Wohlergehen der Menschheit bedeutend verbessern. Gleichzeitig verschlingen aktuelle KI-Ansätze große Mengen Energie und Rohstoffe und wirken sich negativ auf die Lebens- und Arbeitsbedingungen vieler Menschen aus.<br><strong>Alles nicht so einfach. Deshalb gibt es diese Seite.</strong>
+      Künstliche Intelligenz (KI) könne das Klima retten, die Energiewende
+      voranbringen und Gesundheit und Wohlergehen der Menschheit bedeutend
+      verbessern. Gleichzeitig verschlingen aktuelle KI-Ansätze große Mengen
+      Energie und Rohstoffe und wirken sich negativ auf die Lebens- und
+      Arbeitsbedingungen vieler Menschen aus.<br /><strong
+        >Alles nicht so einfach. Deshalb gibt es diese Seite.</strong
+      >
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#features"
+        href={`${base}/about`}
         class="flex gap-1 items-center justify-center"
         rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+        <Icon
+          class="text-white w-5 h-5"
+          name="bx:bxs-cloud-download"
+        />
 
-         Mehr erfahren
+        Mehr erfahren
+      </Link>
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href={`${base}/explorer`}
+        class="flex gap-1 items-center justify-center">
+        <Icon
+          class="text-black w-4 h-4"
+          name="bx:bxs-file-find"
+        />
+        Zum SDG-KI-Explorer
       </Link>
     </div>
   </div>
