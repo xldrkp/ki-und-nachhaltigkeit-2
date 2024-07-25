@@ -1,0 +1,58 @@
+---
+// @ts-ignore
+import { parse } from 'node-html-parser';
+// @ts-ignore
+import * as linkify from 'linkifyjs';
+// @ts-ignore
+import linkifyHtml from 'linkify-html';
+const options = { defaultProtocol: 'https' };
+const { id } = Astro.props;
+
+const api_base = 'https://api.zotero.org/';
+const group_id = '5364207';
+const params =
+	'?format=bib&itemType=-note&style=deutsche-gesellschaft-fur-psychologie';
+
+const query_string =
+	api_base + 'groups/' + group_id + '/collections/' + id + '/items' + params;
+
+const response = await fetch(query_string);
+const data = await response.text();
+
+const root = parse(data);
+const entries = root.querySelectorAll('.csl-entry');
+---
+
+{
+	(entries.length > 0) ?
+	entries.map((e) => {
+		// Convert to text on the fly and then linkyfy
+		// https://github.com/Hypercontext/linkifyjs?tab=readme-ov-file
+		let HTMLtext = linkifyHtml(e.toString(), options);
+
+		// Parse the manipulated text again to HTML object
+		let HTMLobj = parse(HTMLtext);
+
+		try {
+			// Add Tailwind class for links
+			let allLinks = HTMLobj.querySelectorAll('a');
+
+			allLinks[allLinks.length - 1]
+				.setAttribute('class', 'underline')
+				.setAttribute('target', '_blank');
+		} finally {
+			return (
+				<p
+					class="mb-4"
+					set:html={HTMLobj}
+				/>
+			);
+		}
+	}) : <p>bisher noch keine Informationen an dieser Stelle</p>
+}
+
+<style>
+	a {
+		color: red;
+	}
+</style>

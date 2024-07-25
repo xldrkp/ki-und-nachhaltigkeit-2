@@ -1,0 +1,26 @@
+---
+// @ts-ignore
+import { parse } from 'node-html-parser';
+const { id } = Astro.props;
+
+const api_base = 'https://api.zotero.org/';
+const group_id = '5364207';
+const params =
+  '?format=bib&itemType=-note&style=deutsche-gesellschaft-fur-psychologie';
+
+const query_string =
+  api_base + 'groups/' + group_id + '/collections/' + id + '/items' + params;
+
+const response = await fetch(query_string);
+const data = await response.text();
+const root = parse(data);
+const entries = root.querySelectorAll('.csl-entry');
+---
+
+<div class="text-white px-2 -mt-5 text-right text-sm">
+  {
+    entries.length > 1 || entries.length == 0
+      ? `${entries.length} Quellen`
+      : `${entries.length} Quelle`
+  }
+</div>

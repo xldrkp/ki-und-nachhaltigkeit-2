@@ -3,6 +3,8 @@
 import { Icon } from 'astro-icon/components';
 import Link from '@components/ui/link.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const features = [
   {
     title: 'Kollaborative Literatursammlung',
@@ -55,7 +57,7 @@ const features = [
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
           {item.path !== undefined ? (
             <Link
-              href={item.path}
+              href={`${base}${item.path}`}
               class="flex gap-1 items-center mt-4"
               rel="noopener">
               <Icon

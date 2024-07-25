@@ -31,9 +31,29 @@ const teamCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
-//    This key should match your collection directory name in "src/content"
+const SubjectCollection = defineCollection({
+    type: 'content', // v2.5.0 and later
+    schema: z.object({
+      title: z.string(),
+      color: z.string(),
+    }),
+  });
+
+const SDGCollection = defineCollection({
+    type: 'content', // v2.5.0 and later
+    schema: z.object({
+      number: z.number(),
+      title: z.string(),
+      subtitle: z.string(),
+      color: z.string(),
+      zotero_id: z.string().optional(),
+      einordnung: z.string().optional(),
+    }),
+  });
+  
 export const collections = {
   'blog': blogCollection,
   'team': teamCollection,
+    'SDGs': SDGCollection,
+    'subjects': SubjectCollection,
 };

@@ -2,6 +2,7 @@
 import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+const base = import.meta.env.BASE_URL;
 
 const menuitems = [
   {
@@ -47,7 +48,7 @@ const menuitems = [
                 {!item.children && (
                   <li>
                     <a
-                      href={item.path}
+                      href={`${base}${item.path}`}
                       class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
                       <span> {item.title}</span>
                       {item.badge && (

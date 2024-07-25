@@ -1,0 +1,16 @@
+---
+import ZoteroCounter from 'components/ZoteroCounter.astro';
+const { sdg } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="">
+	<a href={`${base}/sdgs/${sdg.slug}/`}>
+		<img
+			src={`${base}/icons/SDG-icon-DE-${sdg.data.number}.svg`}
+			alt=""
+		/>
+		<ZoteroCounter id={sdg.data.zotero_id} />
+	</a>
+</div>

@@ -1,0 +1,22 @@
+---
+import SDGs from '../components/SDGs.astro';
+import Container from '@components/container.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout title="">
+  <Container>
+    <main class="p-2 container mx-auto my-4">
+      <header class="mb-6">
+        <h1
+          class="text-5xl lg:text-5xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter mb-4">
+          SDG-KI-Explorer
+        </h1>
+        <h2 class="text-xl m-0 p-0">
+          Finde Literatur zu Herausforderungen und Potenzialen von KI in den Nachhaltigkeitszielen der Vereinten Nationen.
+        </h2>
+      </header>
+      <SDGs />
+    </main>
+  </Container>
+</Layout>
