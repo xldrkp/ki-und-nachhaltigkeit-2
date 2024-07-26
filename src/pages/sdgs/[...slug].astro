@@ -9,11 +9,11 @@ const base = import.meta.env.BASE_URL;
 const agenda2030_base = 'https://www.bmz.de/de/agenda-2030/sdg-';
 
 export async function getStaticPaths() {
-	const sdgEntries = await getCollection('SDGs');
-	return sdgEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+  const sdgEntries = await getCollection('SDGs');
+  return sdgEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
@@ -23,51 +23,52 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
 ---
 
 <Layout title={entry.data.number + ' | ' + entry.data.title}>
-	<Container class="px-0">
-	<div class="grid grid-cols-1 md:grid-cols-[auto_25%] gap-8 mt-8 px-2">
-		<div>
-			<div class="grid md:grid-cols-[140px_auto] gap-4 mb-6">
-				<img src={sdg_svg} />
-				<div>
-					<h1 class="text-4xl">{entry.data.title}</h1>
-					<p class="text-sky-500 mb-4">
-						<a
-							href={`${agenda2030_base}${entry.data.number}`}
-							>Weiterführende Informationen des BMZ zur Agenda 2030</a
-						>
-					</p>
-					<p class="text-xl">{entry.data.subtitle}</p>
-				</div>
-			</div>
-			<div>
-				<div class="mt-6">
-					<h4 class="text-2xl mb-2 border-b-2">Literatur</h4>
-					<div class="references md:columns-1">
-						<ZoteroFetcher id={entry.data.zotero_id} />
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="questions">
-			<h2 class="text-3xl mb-4 border-b-2">Fragen</h2>
-			<div class="prose prose-ul:pl-5 prose-li:leading-normal">
-				<Content />
-			</div>
-		</div>
-	</div>
-	</Container>
+  <Container class="px-5">
+    <div class="grid grid-cols-1 md:grid-cols-[auto_25%] gap-8 mt-8 px-2">
+      <div>
+        <div class="grid md:grid-cols-[140px_auto] gap-4 mb-6">
+          <img src={sdg_svg} />
+          <div>
+            <h1 class="text-4xl">{entry.data.title}</h1>
+            <p class="text-sky-500 mb-4">
+              <a href={`${agenda2030_base}${entry.data.number}`}
+                >Weiterführende Informationen des BMZ zur Agenda 2030</a
+              >
+            </p>
+            <p class="text-xl">{entry.data.subtitle}</p>
+          </div>
+        </div>
+        <div>
+          <div class="mt-6">
+            <h4 class="text-2xl mb-2 border-b-2">Literatur</h4>
+            <div class="references md:columns-1">
+              <ZoteroFetcher id={entry.data.zotero_id} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="questions">
+        <h2 class="text-3xl mb-4 border-b-2">Fragen</h2>
+        <div class="prose prose-ul:pl-5 prose-li:leading-normal">
+          <p>
+            <strong>Die folgenden Fragen sind zum Einstieg in die Reflexion gedacht.</strong>
+          </p>
+          <Content />
+        </div>
+      </div>
+    </div>
+  </Container>
 </Layout>
 
-
 <style>
-	.references {
-		hyphens: auto;
-		word-break: break-word;
-	}
+  .references {
+    hyphens: auto;
+    word-break: break-word;
+  }
 
-	.questions li::marker {
-		color: red;
-		font-size: 1.5em;
-		content: '✝ ';
-	}
+  .questions li::marker {
+    color: red;
+    font-size: 1.5em;
+    content: '✝ ';
+  }
 </style>

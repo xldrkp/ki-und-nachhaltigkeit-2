@@ -1,0 +1,23 @@
+---
+// @ts-ignore
+import { parse } from 'node-html-parser';
+
+let id = 12
+const api_base = 'https://api.zotero.org/';
+const group_id = '5364207';
+const params =
+  '?format=bib&itemType=-note&style=deutsche-gesellschaft-fur-psychologie';
+const query_string =
+  api_base + 'groups/' + group_id + '/items' + params;
+
+const response = await fetch(query_string);
+const data = await response.text();
+const root = parse(data);
+const entries = root.querySelectorAll('.csl-entry');
+const count = entries.length
+
+console.log(query_string)
+
+---
+
+{ count }

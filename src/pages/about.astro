@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import { Picture } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
+import ZoteroTotalCounter from 'components/ZoteroTotalCounter.astro';
 import Container from '@components/container.astro';
 import Sectionhead from '@components/sectionhead.astro';
+const base = import.meta.env.BASE_URL;
 
 // Filter team entries with 'draft: false' & date before current date
 const publishedTeamMembers = await getCollection('team', ({ data }) => {
@@ -35,18 +36,25 @@ const publishedTeamMembers = await getCollection('team', ({ data }) => {
       </p>
       <h3 class="font-bold text-xl text-gray-800">Bezugsrahmen BNE</h3>
       <p class="text-lg leading-relaxed text-slate-500">
-        Als erstes bietet sich hier der Bezugsrahmen Bildung für Nachhaltige Entwicklung (BNE) an. Mit seinen Oberkategorien Ökologie, Ökonomie und Soziales ermöglichte er eine erste grobe Unterscheidung meiner Rechercheergebisse und Quellen. Da BNE in unterschiedlichen Bildungszusammenhängen bekannt oder etabliert ist, gelingt damit auch die Untersuchung von KI.
+        Als erstes bietet sich hier der Bezugsrahmen Bildung für Nachhaltige Entwicklung (BNE) an. Mit seinen Oberkategorien Ökologie, Ökonomie und Soziales ermöglicht er eine erste grobe Unterscheidung meiner Rechercheergebisse und Quellen. Da BNE in unterschiedlichen Bildungszusammenhängen bekannt oder etabliert ist, gelingt damit auch die Untersuchung von KI.
       </p>
       <h3 class="font-bold text-xl text-gray-800">Bezugsrahmen SDGs</h3>
       <p class="text-lg leading-relaxed text-slate-500">
-        Für eine feinere Unterscheidung der Herausforderungen und Potenziale, die KI für die Menschheit mit sich bringt, bieten sich zudem die 17 Nachhaltigkeitsziele (SDGs) der Vereinten Nationenen an. Sie erlauben zudem internationale Kompatiblität in der Diskussion von KI und Nachhaltigkeit, was für BNE erst einmal nicht gegeben ist.
+        Für eine feinere Unterscheidung der Herausforderungen und Potenziale, die KI für die Menschheit mit sich bringt, bieten sich zudem die 17 Nachhaltigkeitsziele (SDGs) der Vereinten Nationenen an. Sie erlauben zudem internationale Kompatiblität in der Diskussion von KI und Nachhaltigkeit, was für den Bezugsrahmen BNE erst einmal nicht gegeben ist.
       </p>
       <p class="text-lg leading-relaxed text-slate-500">
         Anlass, die Ergebnisse dieser Sammlung und Strukturierung als interaktive Website und Open Educational Ressource (OER) aufzubereiten, waren zwei Workshops zu KI und Nachhaltigkeit, die ich 2024 neben meiner hauptberuflichen Tätigkeit entwickelt und durchgeführt habe.
       </p>
+      <h2 class="font-bold text-3xl text-gray-800">Zum KI-Begriff</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Durch den Auftrieb, den die GPT- und Diffusion-Ansätze der letzten Zeit für die Text- und Bildgenerierung ausgelöst haben, kommt es meiner Beobachtung nach häufig zur Annahme, KI sei gleichzusetzen mit generativer KI (genAI/genKI). Verständlich, wenn Menschen erst durch ChatGPT angefangen haben, sich für das Thema zu interessieren.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Jedoch gehören auch klassische Ansätze des machinellen Lernens (Machine Learning, Deep Learing) zum Begriff "Künstliche Intelligenz" dazu, wenn es um eine ausgewogene Betrachtung von KI und Nachhaltigkeit geht. Denn gerade etablierte Ansätze des maschinellen Lernens in der Bilderkennung, der Musterkennung und Datenvorraussage (Regression und Klassifizierung) bieten viele Chancen vor dem Hintergrund einer Diskussion um Nachhaltigkeit.
+      </p>
       <h2 class="font-bold text-3xl text-gray-800">Auseinandersetzung, Diskussion, Meinungsbildung</h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        Die vorliegende Website ist vor allem als Ausgangspunkt einer Auseinandersetzung individuell oder in sozialen Lernsituationen mit dem Spannungsfeld KI und Nachhaltigkeit gedacht. Dafür habe ich bisher die Quellen der <a class="font-bold underline" href="#">kollaborativen Literatursammlung</a> den 17 Nachhaltigkeitszielen zugeordnet und als <a class="font-bold underline" href="#">SDG-KI-Explorer</a> aufbereitet.
+        Die vorliegende Website ist vor allem als Ausgangspunkt einer Auseinandersetzung individuell oder in sozialen Lernsituationen mit dem Spannungsfeld KI und Nachhaltigkeit gedacht. Dafür habe ich bisher die <ZoteroTotalCounter /> Quellen der <a class="font-bold underline" target="_blank" href="https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library">kollaborativen Literatursammlung</a> den 17 Nachhaltigkeitszielen zugeordnet und als <a class="font-bold underline" href={`${base}/explorer`}>SDG-KI-Explorer</a> aufbereitet.
       </p>
       <p class="text-lg leading-relaxed text-slate-500">
         Die Unterseiten der Nachhaltigkeitsziele sind mit weiterführenden Links zu ihren Inhalten und Teilzielen versehen. Zudem ergänze ich die Seite mit Reflexionsfragen, die mir beim Lesen einfallen oder die sich in Workshopsituationen ergeben.
