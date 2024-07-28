@@ -46,12 +46,17 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
             </div>
           </div>
         </div>
+        <h4 class="mt-8 text-2xl mb-2 border-b-2">Kommentiere diese Seite mit Anregungen oder Kritik.</h4>
+        <div class="mt-8 giscus"></div>
       </div>
       <div class="questions">
         <h2 class="text-3xl mb-4 border-b-2">Fragen</h2>
         <div class="prose prose-ul:pl-5 prose-li:leading-normal">
           <p>
-            <strong>Die folgenden Fragen sind Vorschläge zum Einstieg in die Reflexion.</strong>
+            <strong
+              >Die folgenden Fragen sind Vorschläge zum Einstieg in die
+              Reflexion.</strong
+            >
           </p>
           <Content />
         </div>
@@ -72,3 +77,21 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
     content: '✝ ';
   }
 </style>
+
+<script
+  src="https://giscus.app/client.js"
+  data-repo="xldrkp/ki-und-nachhaltigkeit-2"
+  data-repo-id="R_kgDOMagFsg"
+  data-category="SDGs"
+  data-category-id="DIC_kwDOMagFss4ChPaY"
+  data-mapping="pathname"
+  data-strict="1"
+  data-reactions-enabled="0"
+  data-emit-metadata="1"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="de"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async
+></script>
