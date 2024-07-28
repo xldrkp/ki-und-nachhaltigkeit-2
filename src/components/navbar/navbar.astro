@@ -1,25 +1,26 @@
 ---
-import Container from "@components/container.astro";
-import Link from "@components/ui/link.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import Container from '@components/container.astro';
+import Link from '@components/ui/link.astro';
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar';
 const base = import.meta.env.BASE_URL;
 
 const menuitems = [
   {
-    title: "Startseite",
-    path: "/",
+    title: 'Startseite',
+    path: '/',
   },
   {
-    title: "Literatursammlung",
-    path: "https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library",
+    title: 'Literatursammlung',
+    external_path:
+      'https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library',
   },
   {
-    title: "SDG-KI-Explorer",
-    path: "/explorer",
+    title: 'SDG-KI-Explorer',
+    path: '/explorer',
   },
   {
-    title: "Über",
-    path: "/about",
+    title: 'Über',
+    path: '/about',
   },
 ];
 ---
@@ -47,16 +48,30 @@ const menuitems = [
 
                 {!item.children && (
                   <li>
-                    <a
-                      href={`${base}${item.path}`}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-                      <span> {item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
-                    </a>
+                    {item.path !== undefined ? (
+                      <a
+                        href={`${base}${item.path}`}
+                        class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
+                        <span> {item.title}</span>
+                        {item.badge && (
+                          <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+                            New
+                          </span>
+                        )}
+                      </a>
+                    ) : (
+                      <a
+                        href={item.external_path}
+                        target="_blank"
+                        class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
+                        <span> {item.title}</span>
+                        {item.badge && (
+                          <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+                            New
+                          </span>
+                        )}
+                      </a>
+                    )}
                   </li>
                 )}
               </>

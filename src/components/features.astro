@@ -12,7 +12,8 @@ const features = [
     description:
       'Finde und ergänze wissenschaftliche und journalistische Veröffentlichungen in der Literatursammlung auf Zotero Online.',
     icon: 'bx:bxs-book',
-    path: 'https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library',
+    external_path:
+      'https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library',
     label: 'Zur Sammlung',
   },
   {
@@ -56,7 +57,7 @@ const features = [
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>{' '}
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-          {item.path !== undefined ? (
+          {item.path !== undefined && item.external_path == undefined ? (
             <Link
               href={`${base}${item.path}`}
               class="flex gap-1 items-center mt-4"
@@ -67,8 +68,19 @@ const features = [
               />
               {item.label}
             </Link>
-          ) : ""
-          }
+          ) : (
+            <Link
+              href={item.external_path}
+              class="flex gap-1 items-center mt-4"
+              target="_blank"
+              rel="noopener">
+              <Icon
+                class="text-white w-5 h-5"
+                name={item.icon}
+              />
+              {item.label}
+            </Link>
+          )}
         </div>
       </div>
     ))
