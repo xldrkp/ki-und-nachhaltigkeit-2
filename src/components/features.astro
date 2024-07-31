@@ -12,6 +12,7 @@ const features = [
     description:
       'Finde und ergänze wissenschaftliche und journalistische Veröffentlichungen in der Literatursammlung auf Zotero Online.',
     icon: 'bx:bxs-book',
+    path: '',
     external_path:
       'https://www.zotero.org/groups/5364207/ki_und_nachhaltigkeit/library',
     label: 'Zur Sammlung',
@@ -36,17 +37,17 @@ const features = [
 <div
   class="mt-16 md:mt-0"
   id="features">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+  <h2 class="text-4xl lg:text-4xl font-bold lg:tracking-tight lg:leading-tight">
     Wie nachhaltig ist Künstliche Intelligenz?
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
+  <p class="text-lg text-slate-600">
     Finde es mit den Tools dieser Seite selbst heraus.
   </p>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
   {
-    features.map((item) => (
+    features.map((item, idx) => (
       <div class="flex gap-4 items-start">
         <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
           <Icon
@@ -57,29 +58,33 @@ const features = [
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>{' '}
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-          {item.path !== undefined && item.external_path == undefined ? (
-            <Link
-              href={`${base}${item.path}`}
-              class="flex gap-1 items-center mt-4"
-              rel="noopener">
-              <Icon
-                class="text-white w-5 h-5"
-                name={item.icon}
-              />
-              {item.label}
-            </Link>
+          {idx != 2 ? (
+            item.path !== undefined && item.external_path == undefined ? (
+              <Link
+                href={`${base}${item.path}`}
+                class="flex gap-1 items-center mt-4"
+                rel="noopener">
+                <Icon
+                  class="text-white w-5 h-5"
+                  name={item.icon}
+                />
+                {item.label}
+              </Link>
+            ) : (
+              <Link
+                href={item.external_path}
+                class="flex gap-1 items-center mt-4"
+                target="_blank"
+                rel="noopener">
+                <Icon
+                  class="text-white w-5 h-5"
+                  name={item.icon}
+                />
+                {item.label}
+              </Link>
+            )
           ) : (
-            <Link
-              href={item.external_path}
-              class="flex gap-1 items-center mt-4"
-              target="_blank"
-              rel="noopener">
-              <Icon
-                class="text-white w-5 h-5"
-                name={item.icon}
-              />
-              {item.label}
-            </Link>
+            ''
           )}
         </div>
       </div>
