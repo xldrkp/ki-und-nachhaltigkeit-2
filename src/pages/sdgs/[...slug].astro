@@ -23,19 +23,19 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
 ---
 
 <Layout title={entry.data.number + ' | ' + entry.data.title}>
-  <Container class="px-5">
+  <Container class="px-3">
     <div class="grid grid-cols-1 md:grid-cols-[auto_25%] gap-8 mt-8 px-2">
       <div>
         <div class="grid md:grid-cols-[140px_auto] gap-4 mb-6">
           <img src={sdg_svg} />
           <div>
             <h1 class="text-4xl hyphens-auto">{entry.data.title}</h1>
-            <p class="text-sky-500 mb-4">
+            <p class="text-xl">{entry.data.subtitle}</p>
+            <p class="text-sky-500 mb-4 mt-4">
               <a href={`${agenda2030_base}${entry.data.number}`}
-                >Weiterführende Informationen des BMZ zur Agenda 2030</a
+                >Weiterführende Informationen des Bundesministeriums für wirtschaftliche Zusammenarbeit und Entwicklung (BMZ) zu diesem Nachhaltigkeitsziel</a
               >
             </p>
-            <p class="text-xl">{entry.data.subtitle}</p>
           </div>
         </div>
         <div>
@@ -52,7 +52,7 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
       <div class="questions">
         <h2 class="text-3xl mb-4 border-b-2">Fragen</h2>
         <div class="prose prose-ul:pl-5 prose-li:leading-normal">
-          <p>
+          <p class="leading-normal">
             <strong
               >Die folgenden Fragen sind Vorschläge zum Einstieg in die
               Reflexion.</strong
