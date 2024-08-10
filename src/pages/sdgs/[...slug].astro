@@ -35,21 +35,25 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
         <div class="grid md:grid-cols-[140px_auto] gap-4 mb-6">
           <img src={sdg_svg} />
           <div>
-            <h1 class="text-4xl hyphens-auto">{entry.data.title}</h1>
-            <p class="text-xl">{entry.data.subtitle}</p>
-            <p class="text-sky-500 mb-4 mt-4">
-              <Icon
-                class="text-black size-8 bx-pull-left"
-                name="bx:bx-info-square"
-              />
-              <a
-                class="underline inline"
-                href={`${agenda2030_base}${entry.data.number}`}>
-                Weiterführende Informationen des Bundesministeriums für
-                wirtschaftliche Zusammenarbeit und Entwicklung (BMZ) zu diesem
-                Nachhaltigkeitsziel</a
-              >
-            </p>
+            <h1 class="text-3xl md:text-4xl hyphens-auto">{entry.data.title}</h1>
+            <p class="text-md md:text-xl">{entry.data.subtitle}</p>
+            <div class="flex mt-4 gap-4">
+              <div class="w-1/16">
+                <Icon
+                  class="text-black block size-8 bx-pull-left"
+                  name="bx:bx-info-square"
+                />
+              </div>
+              <div class="w-15/16">
+                <a
+                  class="text-md text-sky-500 underline inline"
+                  href={`${agenda2030_base}${entry.data.number}`}>
+                  Weiterführende Informationen des Bundesministeriums für
+                  wirtschaftliche Zusammenarbeit und Entwicklung (BMZ) zu diesem
+                  Nachhaltigkeitsziel</a
+                >
+              </div>
+            </div>
           </div>
         </div>
         <div>
@@ -63,6 +67,7 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
         <h4 class="mt-8 text-2xl mb-2 border-b-2">
           Kommentiere diese Seite mit Anregungen oder Kritik.
         </h4>
+        <p>Du kannst auch eine weitere Quelle für die Literaturliste vorschlagen.</p>
         <div class="mt-8 giscus"></div>
       </div>
       <div class="questions">

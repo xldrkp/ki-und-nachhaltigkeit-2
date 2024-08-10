@@ -5,6 +5,7 @@ import { parse } from 'node-html-parser';
 import * as linkify from 'linkifyjs';
 // @ts-ignore
 import linkifyHtml from 'linkify-html';
+import { Icon } from 'astro-icon/components';
 const options = { defaultProtocol: 'https' };
 const { id } = Astro.props;
 
@@ -21,31 +22,46 @@ const data = await response.text();
 const root = parse(data);
 // const entries = root.querySelectorAll('.csl-entry');
 
-console.log(data);
+// console.log(data);
 const entries = JSON.parse(data);
 // console.log(entries.length)
+// console.log(entries);
 ---
 
 {
   entries.length > 0 ? (
     entries.map((e) => {
-
       // Convert to text on the fly and then linkyfy
       // https://github.com/Hypercontext/linkifyjs?tab=readme-ov-file
-      let HTMLtext = linkifyHtml(e["bib"].toString(), options);
+      let HTMLtext = linkifyHtml(e['bib'].toString(), options);
 
       // Parse the manipulated text again to HTML object
       let HTMLobj = parse(HTMLtext);
 
       try {
+        let border = 'border-gray-400';
+
+        const focus = e.data.extra;
+        const [key, value] = focus.split(':');
+        const obj = { [key]: value };
+        let str = JSON.stringify(obj);
+        str = JSON.parse(str);
+        // console.log(str.f);
+
+        if (str.f != undefined) {
+          if (str.f == 'p') {
+            border = 'border-green-600';
+          } else if (str.f == 'n') {
+            border = 'border-red-600';
+          }
+        }
         // set border for entry
         let entry = HTMLobj.querySelector('.csl-entry');
-        // console.log(entry)
-        entry.classList.add('border-green-600');
+        // console.log(e);
+        entry.classList.add(`${border}`);
         entry.classList.add('border-solid');
         entry.classList.add('border-l-8');
         entry.classList.add('pl-2');
-
       } catch {
         //
       }
@@ -54,16 +70,32 @@ const entries = JSON.parse(data);
         // Add Tailwind class for links
         let allLinks = HTMLobj.querySelectorAll('a');
 
-        allLinks[allLinks.length - 1].setAttribute('class', 'underline');
+        allLinks[allLinks.length - 1].setAttribute(
+          'class',
+          'text-sky-500 underline'
+        );
         // // .setAttribute('target', '_blank');
       } finally {
-
         let entry = HTMLobj.querySelector('.csl-entry');
         return (
-          <p
-            class="mb-4"
-            set:html={entry}
-          />
+          <div class="flex gap-4 mb-2">
+            <div class="flex-1 w-7/8">
+              <span
+                class="mb-4"
+                set:html={entry}
+              />
+            </div>
+            <div class="w-1/8 text-right">
+              <a
+                href={e.links.alternate.href}
+                title="Zotero-Eintrag">
+                <Icon
+                  class="text-sky-500 inline text-right size-6"
+                  name="bx:bx-collection"
+                />
+              </a>
+            </div>
+          </div>
         );
       }
     })
@@ -71,6 +103,19 @@ const entries = JSON.parse(data);
     <p>bisher noch keine Informationen an dieser Stelle</p>
   )
 }
+
+<h3 class="mt-8 border-b-2 bold text-md">Legende</h3>
+<p class="mt-2 mb-8 text-sm">
+  <span class="border-green-600 border-solid border-l-8 pl-1"
+    >positiver Fokus im Sinne des SDGs</span
+  >
+  <span class="ml-4 border-red-600 border-solid border-l-8 pl-1"
+    >negativer Fokus im Sinne des SDGs</span
+  >
+  <span class="ml-4 border-gray-400 border-solid border-l-8 pl-1"
+    >Bericht mit ausgewogenen Positionen</span
+  >
+</p>
 
 <style>
   a {
