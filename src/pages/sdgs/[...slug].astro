@@ -3,6 +3,7 @@ import Container from '@components/container.astro';
 import Layout from '../../layouts/Layout.astro';
 import ZoteroFetcher from '../../components/ZoteroFetcher.astro';
 import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
 
 const base = import.meta.env.BASE_URL;
 
@@ -22,6 +23,11 @@ const { Content } = await entry.render();
 const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
 ---
 
+<link
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+
 <Layout title={entry.data.number + ' | ' + entry.data.title}>
   <Container class="px-3">
     <div class="grid grid-cols-1 md:grid-cols-[auto_25%] gap-8 mt-8 px-2">
@@ -32,8 +38,16 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
             <h1 class="text-4xl hyphens-auto">{entry.data.title}</h1>
             <p class="text-xl">{entry.data.subtitle}</p>
             <p class="text-sky-500 mb-4 mt-4">
-              <a href={`${agenda2030_base}${entry.data.number}`}
-                >Weiterführende Informationen des Bundesministeriums für wirtschaftliche Zusammenarbeit und Entwicklung (BMZ) zu diesem Nachhaltigkeitsziel</a
+              <Icon
+                class="text-black size-8 bx-pull-left"
+                name="bx:bx-info-square"
+              />
+              <a
+                class="underline inline"
+                href={`${agenda2030_base}${entry.data.number}`}>
+                Weiterführende Informationen des Bundesministeriums für
+                wirtschaftliche Zusammenarbeit und Entwicklung (BMZ) zu diesem
+                Nachhaltigkeitsziel</a
               >
             </p>
           </div>
@@ -46,11 +60,19 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
             </div>
           </div>
         </div>
-        <h4 class="mt-8 text-2xl mb-2 border-b-2">Kommentiere diese Seite mit Anregungen oder Kritik.</h4>
+        <h4 class="mt-8 text-2xl mb-2 border-b-2">
+          Kommentiere diese Seite mit Anregungen oder Kritik.
+        </h4>
         <div class="mt-8 giscus"></div>
       </div>
       <div class="questions">
-        <h2 class="text-3xl mb-4 border-b-2">Fragen</h2>
+        <h2 class="text-3xl mb-4 border-b-2">
+          <Icon
+            class="text-black bx-pull-left"
+            name="bx:bx-bulb"
+          />
+          Fragen
+        </h2>
         <div class="prose prose-ul:pl-5 prose-li:leading-normal">
           <p class="leading-normal">
             <strong
