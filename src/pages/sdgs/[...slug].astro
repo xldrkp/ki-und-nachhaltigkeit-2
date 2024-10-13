@@ -70,11 +70,33 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
         <p>Du kannst auch eine weitere Quelle für die Literaturliste vorschlagen.</p>
         <div class="mt-8 giscus"></div>
       </div>
-      <div class="questions">
+      <div class="instructions">
         <h2 class="text-3xl mb-4 border-b-2">
           <Icon
             class="text-black bx-pull-left"
-            name="bx:bx-bulb"
+            name="bx:bx-cloud-lightning"
+          />
+          Lernanregungen
+        </h2>
+        <div class="prose prose-ul:pl-5 prose-li:leading-normal">
+          <p class="leading-normal">
+            <strong
+              >Um die verschiedenen Perspektiven auf KI und Nachhaltigkeit zu verstehen, schlagen wir dir Folgendes vor:</strong
+            >
+            <ul>
+              <li><strong>Such dir eine noch eine weitere Person</strong>, mit der du dich über das Thema unterhalten möchtest.</li>
+              <li><strong>Beschäftigt euch mit den Zielen und Unterzielen dieses SDGs.</strong></li>
+              <li><strong>Sucht euch zwei Texte aus der Liste aus</strong>, die konträre Positionen vertreten. Wenn es nicht genügend Texte gibt, dann recherchiert gern selbst welche und schlagt sie unten in den Kommentaren vor.</li>
+              <li><strong>Schaut euch die Reflexionsfragen an</strong>, die als Einstieg in die Texte dienen können.</li>
+              <li>Lest die Texte gemeinsam. <strong>Sprecht miteinander</strong> über Aspekte, die ihr nicht versteht und dich euch bewegen und interessieren.</li>
+              <li><strong>Erläutert euch und anderen die technischen Hintergründe der KI-Ansätze in den Texten.</strong></li>
+            </ul>
+          </p>
+        </div>
+        <h2 class="text-3xl mb-4 border-b-2">
+          <Icon
+            class="text-black bx-pull-left"
+            name="bx:bx-bell"
           />
           Fragen
         </h2>
@@ -86,6 +108,7 @@ const sdg_svg = base + '/icons/SDG-icon-DE-' + entry.data.number + '.svg';
             >
           </p>
           <Content />
+          <p class="leading-normal"><strong>Schreibt eure eigenen Fragen gern in die Kommentare.</strong></p>
         </div>
       </div>
     </div>
