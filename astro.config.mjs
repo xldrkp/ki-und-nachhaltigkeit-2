@@ -6,7 +6,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://axel-duerkop.de",
   base: '/course/ki-und-nachhaltigkeit',
   integrations: [tailwind(), mdx(), sitemap(), icon()],
 });

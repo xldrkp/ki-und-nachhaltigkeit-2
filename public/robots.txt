@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://astroship.web3templates.com/sitemap-index.xml
+Sitemap: https://axel-duerkop.de/course/ki-und-nachhaltigkeit/sitemap-index.xml

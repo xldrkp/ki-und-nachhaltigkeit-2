@@ -14,15 +14,16 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
+  "/course/ki-und-nachhaltigkeit/opengraph.jpg",
+  Astro.site,
 ).toString();
+
 
 const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "KI und Nachhaltigkeit"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  : "KI und Nachhaltigkeit";
 ---
 
 <!DOCTYPE html>
@@ -36,22 +37,22 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Wie nachhaltig ist Künstliche Intelligenz?"
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@xldrkp",
+        site: "@xldrkp",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `KI und Nachhaltigkeit | Chance oder Widerspruch?`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Zwei graue Figuren, die auf einen Wegweiser schauen und sich fragen, wo es lang geht. Daneben steht eine Erläuterung, worum es auf der Website geht.",
         },
       }}
     />
