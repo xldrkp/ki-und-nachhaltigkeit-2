@@ -5,7 +5,7 @@ const { sdg } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<div>
+<div class="z-50">
 	<a href={`${base}/sdgs/${sdg.slug}/`}>
 		<img
 			src={`${base}/icons/SDG-icon-DE-${sdg.data.number}.svg`}
